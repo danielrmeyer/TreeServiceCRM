@@ -1,7 +1,9 @@
+<a href="/customers/">Back</a>
 {%if properties %}
+
 <ul>
-    {% for property in properties %}
-    <li>{{ property }}</li>
+    {% for p in properties %}
+    <li><a href="{% url 'property_detail' pk=p.id %}">{{ p }}</a></li>
     {% endfor %}
 </ul>
 {% else %}

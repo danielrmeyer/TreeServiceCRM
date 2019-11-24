@@ -1,7 +1,8 @@
 {%if jobs %}
+
 <ul>
-    {% for job in jobs %}
-    <li>{{ job }}</li>
+    {% for j in jobs %}
+    <li><a href="{% url 'job_detail' pk=j.id %}">{{ j }}</a></li>
     {% endfor %}
 </ul>
 {% else %}

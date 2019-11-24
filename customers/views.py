@@ -74,7 +74,6 @@ class JobListView(generic.ListView):
             raise Http404("You are searching an axis that does not exist")
 
 
-
 class CustomerDetailView(generic.DetailView):
     model = Customer
     template_name = 'customers/customer.html'
