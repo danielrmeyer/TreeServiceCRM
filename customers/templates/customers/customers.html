@@ -1,0 +1,10 @@
+<a href="/customers/">Back</a>
+{%if customers %}
+<ul>
+    {% for customer in customers %}
+    <li>{{ customer }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No Customer found.</p>
+{% endif %}

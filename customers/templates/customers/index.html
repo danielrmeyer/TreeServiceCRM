@@ -1,0 +1,31 @@
+<a href="/admin/customers/">Admin Page</a>
+
+<h1>Welcome to the Tree Service CRM</h1>
+<hr>
+<form action="/customers/customers" method="get">
+    {% csrf_token %}
+    <input type="radio" name="axis" value="name"> Customer name
+    <input type="radio" name="axis" value="address"> Customer address
+    <input type="radio" name="axis" value="email"> Customer email
+    <input type="radio" name="axis" value="notes"> Customer notes<br>
+
+    <input id="customer_search" type="text" name="search_string" value="{{ default_search_string }}"><br>
+    <input type="submit" value="Search Customers">
+</form>
+<hr>
+<form action="/customers/properties" method="get">
+    {% csrf_token %}
+    <input type="radio" name="axis" value="address"> Property address
+    <input type="radio" name="axis" value="notes"> Property notes <br>
+    <input id="property_search" type="text" name="search_string" value="{{ default_search_string }}"><br>
+    <input type="submit" value="Search Properties">
+</form>
+<hr>
+<form action="/customers/jobs" method="get">
+    {% csrf_token %}
+    <input type="radio" name="axis" value="notes"> Job notes
+    <input type="radio" name="axis" value="description"> Job description<br>
+    <input id="job_search" type="text" name="search_string" value="{{ default_search_string }}"><br>
+    <input type="submit" value="Search Jobs">
+</form>
+

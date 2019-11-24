@@ -5,7 +5,7 @@ import datetime
 
 class Customer(models.Model):
     name = models.CharField(max_length=200)
-    mailing_address = models.TextField(null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
     phone1 = models.CharField(max_length=11, null=True, blank=True)
     phone2 = models.CharField(max_length=11, null=True, blank=True)
     email = models.CharField(max_length=20, null=True, blank=True)
@@ -30,9 +30,10 @@ class Job(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     description = models.TextField()
     order_date = models.DateField('Job order date')
-    start_date_time = models.DateTimeField("Job start date and time", null=True, blank=True)
+    start_date = models.DateField("Job start date", null=True, blank=True)
     completion_date_time = models.DateTimeField("Job completions date", null=True, blank=True)
     cost = models.FloatField(null=True, blank=True)
+    paid = models.BooleanField(null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
 
     def __str__(self):

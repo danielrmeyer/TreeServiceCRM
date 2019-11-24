@@ -1,0 +1,9 @@
+{%if jobs %}
+<ul>
+    {% for job in jobs %}
+    <li>{{ job }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No jobs found.</p>
+{% endif %}

@@ -1,0 +1,9 @@
+{%if properties %}
+<ul>
+    {% for property in properties %}
+    <li>{{ property }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No Customer found.</p>
+{% endif %}
