@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.admin import sites
+
 
 from .models import Customer, Property, Job
 
@@ -77,6 +79,16 @@ class JobAdmin(admin.ModelAdmin):
     get_property_address.admin_order_field = "address"
     get_property_address.short_description = "Property Address"
 
+
+class TreeCareAdmin(admin.AdminSite):
+    site_header = "Simple Tree Service CRM"
+    site_title = "Simple Tree Service CRM"
+    site_url = None
+
+
+tree_care_admin = TreeCareAdmin()
+admin.site = tree_care_admin
+sites.site = tree_care_admin
 
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Property, PropertyAdmin)
