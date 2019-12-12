@@ -37,7 +37,7 @@ class CustomerAdmin(admin.ModelAdmin):
         "notes"
     )
 
-    inlines = [JobInline]
+    # inlines = [JobInline]
 
 
 class PropertyAdmin(admin.ModelAdmin):
@@ -63,24 +63,20 @@ class PropertyAdmin(admin.ModelAdmin):
 
 class JobAdmin(admin.ModelAdmin):
     search_fields = (
-        "description",
-        "order_date",
-        "start_date",
+        "completion_date",
         "notes",
-        "task__description"
+        "task__description",
+        "task__activity",
     )
 
-    date_hierarchy = 'start_date'
+    date_hierarchy = 'completion_date'
 
     list_display = (
-        "description",
-        "order_date",
-        "start_date",
-        "completion_date_time",
-        "cost",
-        "paid",
         "get_customer_name",
         "get_property_address",
+        "completion_date",
+        "grand_total",
+        "paid",
     )
 
     def get_customer_name(self, obj):
@@ -90,7 +86,7 @@ class JobAdmin(admin.ModelAdmin):
         return obj.property.address
 
     get_customer_name.admin_order_field = "customer"
-    get_customer_name.short_description = "Customer Namer"
+    get_customer_name.short_description = "Customer Name"
 
     get_property_address.admin_order_field = "address"
     get_property_address.short_description = "Property Address"
