@@ -41,3 +41,9 @@ class Job(models.Model):
         property_location = str(self.property)
         description = self.description
         return f"{description} for {customer_name} at {property_location}"
+
+
+class Task(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    description = models.TextField()
+    cost = models.FloatField(null=True, blank=True)

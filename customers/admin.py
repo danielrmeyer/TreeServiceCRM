@@ -2,7 +2,20 @@ from django.contrib import admin
 from django.contrib.admin import sites
 
 
-from .models import Customer, Property, Job
+from .models import Customer, Property, Job, Task
+
+
+class TaskInline(admin.TabularInline):
+    model = Task
+    extra = 3
+
+
+class PropertyInline(admin.StackedInline):
+    model = Property
+
+
+class JobInline(admin.StackedInline):
+    model = Job
 
 
 class CustomerAdmin(admin.ModelAdmin):
@@ -23,6 +36,8 @@ class CustomerAdmin(admin.ModelAdmin):
         "email",
         "notes"
     )
+
+    inlines = [JobInline]
 
 
 class PropertyAdmin(admin.ModelAdmin):
@@ -52,6 +67,7 @@ class JobAdmin(admin.ModelAdmin):
         "order_date",
         "start_date",
         "notes",
+        "task__description"
     )
 
     date_hierarchy = 'start_date'
@@ -78,6 +94,8 @@ class JobAdmin(admin.ModelAdmin):
 
     get_property_address.admin_order_field = "address"
     get_property_address.short_description = "Property Address"
+
+    inlines = [TaskInline]
 
 
 class TreeCareAdmin(admin.AdminSite):
